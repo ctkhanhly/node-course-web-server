@@ -84,6 +84,11 @@ app.get('/bad',(req,res)=>{
     });
 });
 
+app.get('/project', (req,res)=>{
+    res.render('project.hbs',{
+        pageTitle: 'Project Page'
+    })
+});
 
 //dynamic port rather than statically coded
 //use an environment variable that heroku was gonna set
