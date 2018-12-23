@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{pageTitle}}</title>
+    </head>
+    <body>
+        {{>header}}
+        <!--welcomeMessage only available in home.hbs-->
+        <!--<p>{{welcomeMessage}}</p> -->
+        <p>{{screamIt welcomeMessage 'Jennifer'}}</p>
+
+        <!--add a template-->
+        {{>footer}}
+    </body>
+</html>
