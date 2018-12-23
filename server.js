@@ -2,6 +2,10 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//process.env: store all environment variables as key-value pairs.
+//if run locally, does not exist => default = 3000
+//PORT is the variable used by heroku
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -56,6 +60,7 @@ hbs.registerHelper('screamIt',(text, name)=>{
 })
 
 
+/*
 //no next above, this actual handler will never get executed
 app.get('/',(req,res)=>{
    res.render('home.hbs',{
@@ -63,6 +68,7 @@ app.get('/',(req,res)=>{
     welcomeMessage: 'Welcome to Ly\'s first website'
    })
 });
+*/
 
 //http://localhost:3000/about
 app.get('/about',(req,res)=>{
@@ -79,8 +85,13 @@ app.get('/bad',(req,res)=>{
 });
 
 
-app.listen(3000, ()=>{
-    console.log('Server is up on port 3000');
+//dynamic port rather than statically coded
+//use an environment variable that heroku was gonna set
+//change port everytime we run app/deploy
+//heroku can set en variable on ur sys, ur node app can read that
+//variable and use that as a port
+app.listen(port, ()=>{
+    console.log(`Server is up on port ${port}`);
 });
 
 
